@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades de Medidas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjlI71nyrbBPc3Gq60g3PtZ6JuKhEBohPAGA&s);
+        }
+        .cuadro {
+            font-family: 'Candy Script', cursive;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            max-width: 400px;
+            background-color: #3f4347; /* Color del cuadro */
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2fa5b9;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #6f73a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="cuadro">
+        <h1>Unidades de Medidas</h1>
+        <label for="numero">Ingrese un número:</label>
+        <input type="number" id="numero" placeholder="Número a convertir" required>
+        
+        <label for="unidad">Seleccione la unidad de origen:</label>
+        <select id="unidad">
+            <option value="cm">Centímetros</option>
+            <option value="m">Metros</option>
+            <option value="km">Kilómetros</option>
+        </select>
+        
+        <button onclick="convertir()">Convertir</button>
+        
+        <h2>Resultado:</h2>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function convertir() {
+            const numero = parseFloat(document.getElementById('numero').value);
+            const unidad = document.getElementById('unidad').value;
+            let resultado;
+
+            if (isNaN(numero)) {
+                document.getElementById('resultado').innerText = "Por favor, ingrese un número válido.";
+                return;
+            }
+
+            switch (unidad) {
+                case 'cm':
+                    resultado = numero / 100; // Convertir a metros
+                    document.getElementById('resultado').innerText = `${numero} cm = ${resultado} m`;
+                    break;
+                case 'm':
+                    resultado = numero / 1000; // Convertir a kilómetros
+                    document.getElementById('resultado').innerText = `${numero} m = ${resultado} km`;
+                    break;
+                case 'km':
+                    resultado = numero * 1000; // Convertir a metros
+                    document.getElementById('resultado').innerText = `${numero} km = ${resultado} m`;
+                    break;
+                default:
+                    document.getElementById('resultado').innerText = "Unidad no válida.";
+            }
+        }
+    </script>
+</body>
+</html>

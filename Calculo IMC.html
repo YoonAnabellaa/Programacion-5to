@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>Calculo IMC</title>
+	</head>
+	<body>
+		<form action="file:///C:/Users/nueva/AppData/Local/Temp/Rar$EXa5160.24395/santa_maria-main/index.html" onsubmit="calcular_imc(event)">
+			<input type="number" name="altura" id="altura" onchange="calcular_imc(event)">
+			<input type="number" name="peso" id="peso" onchange="calcular_imc(event)">
+			<button type="submit"> calcular imc</button>
+		</form>
+		<h2 id="resu"></h2>
+			<script type="text/javascript">
+
+			function calcular_imc(event) {
+				event.preventDefault();
+				var altura;
+				var peso;
+				altura = document.getElementById("altura").value;
+				peso = document.getElementById("peso").value;
+			
+				document.getElementById("resu").innerText = peso/(altura*altura);					
+			}
+			
+		</script>
+	
+
+</body></html>
